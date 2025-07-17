@@ -1,9 +1,9 @@
 {% extends 'posts/base.html' %}
 
-{% block title %}Edit Post - Guffgram{% endblock %}
+{% block title %}Create New Post - Guffgram{% endblock %}
 
 {% block content %}
-    <h1>Edit Post</h1>
+    <h1>Create New Post</h1>
     
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -21,17 +21,13 @@
             {% if form.photo.help_text %}
                 <div class="helptext">{{ form.photo.help_text }}</div>
             {% endif %}
-            {% if post.photo %}
-                <p>Current photo:</p>
-                <img src="{{ post.photo.url }}" alt="Current photo" style="max-width: 200px;">
-            {% endif %}
         </div>
         
         <div class="form-group">
             {{ form.caption.label_tag }}
             {{ form.caption }}
             {% if form.caption.errors %}
-                <ul class="errorlist"> 
+                <ul class="errorlist">
                     {% for error in form.caption.errors %}
                         <li>{{ error }}</li>
                     {% endfor %}
@@ -42,8 +38,8 @@
             {% endif %}
         </div>
         
-        <button type="submit" class="btn">Update Post</button>
+        <button type="submit" class="btn">Post</button>
     </form>
     
     <p><a href="{% url 'home' %}">Back to Home</a></p>
-{% endblock %}
+{% endblock %}
